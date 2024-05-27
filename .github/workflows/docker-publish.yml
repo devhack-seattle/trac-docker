@@ -59,6 +59,8 @@ jobs:
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=schedule,prefix=trunk-,pattern={{date 'YYYYMMDD'}}
 
       - name: Build and push unstable Docker image
         id: build-and-push-unstable
@@ -69,6 +71,7 @@ jobs:
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:trunk
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:unstable
+            ${{ steps.meta.outputs.tags }}  # This should only contain trunk-<date> processed above
           build-args: |
             TRAC_INSTALL_URL=svn+https://svn.edgewall.org/repos/trac/trunk
           labels: ${{ steps.meta.outputs.labels }}
