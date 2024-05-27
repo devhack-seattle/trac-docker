@@ -4,29 +4,22 @@
 [![](https://images.microbadger.com/badges/image/stephenhsu/trac.svg)](https://hub.docker.com/r/stephenhsu/trac/)
 [![Docker Hub](http://img.shields.io/docker/pulls/stephenhsu/trac.svg)](https://hub.docker.com/r/stephenhsu/trac/)
 
-This repo is used to host a bunldle to create a docker container (based on
-Ubuntu Xenial) running [Trac](http://trac.edgewall.org),
-which is an enhanced wiki and issue tracking system for software development
-projects. Trac uses a minimalistic approach to web-based software project
-management. It helps developers write great software while staying out of
-the way. Trac should impose as little as possible on a team's established
-development process and policies.
+This repo is used to host a bunldle to create a docker container running
+[Trac](http://trac.edgewall.org), which is an enhanced wiki and issue tracking
+system for software development projects. Trac uses a minimalistic approach to
+web-based software project management. It helps developers write great software
+while staying out of the way. Trac should impose as little as possible on a
+team's established development process and policies.
 
 
 # How to get the image
 
 * Build it using Dockerfile
 
-    ```ssh
-    $ git clone https://github.com/dixudx/trac-docker
+    ```bash
+    $ git clone https://github.com/mjsir911/trac-docker
     $ cd trac-docker
     $ docker build -t trac ./
-    ```
-
-* just pull it from Dockerhub
-
-    ```
-    $ docker pull stephenhsu/trac
     ```
 
 
@@ -37,23 +30,15 @@ development process and policies.
 Just run
 
 ```
-$ docker run -d -p 8123:8123 --name my_trac stephenhsu/trac
+$ docker run -d -p 8000:8000 --name my_trac trac
 ```
 
 After several seconds, you can visit the web page at
-<http://localhost:8123>
+<http://localhost:8000>
 
 ## Environment Variables Explanations
 
 Most of below
-
-* `TRAC_ADMIN_NAME` (default is `trac_admin`):
-
-    the admin username of Trac
-
-* `TRAC_ADMIN_PASSWD` (default is `passw0rd`):
-
-    the admin password of Trac
 
 * `TRAC_PROJECT_NAME` (default is `trac_project`):
 
@@ -88,17 +73,6 @@ Most of below
         read the [MySqlDb](https://trac.edgewall.org/intertrac/MySqlDb) page
         before creating the database.
 
-
-## Wants More Secure
-
-This container image is powered by [Apache Web Server](https://httpd.apache.org/).
-You can make your own customizations (such as adding TLS etc.) in
-`./trac.conf` and map to `/etc/apache2/sites-available/trac.conf` when
-starting a container.
-
-```
-$ docker run -d -p 8123:8123 -v ./trac.conf:/etc/apache2/sites-available/trac.conf --name my_trac stephenhsu/trac
-```
 
 # Reference
 
