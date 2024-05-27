@@ -91,7 +91,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Build and push 1.6 Docker image
-        id: build-and-push-1.6
+        id: build-and-push-1_6
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
         with:
           context: .
