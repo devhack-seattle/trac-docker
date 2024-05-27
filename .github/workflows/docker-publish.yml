@@ -71,7 +71,8 @@ jobs:
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:trunk
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:unstable
-            ${{ steps.meta.outputs.tags }}  # This should only contain trunk-<date> processed above
+            ${{ steps.meta.outputs.tags }}
+          # This should only contain trunk-<date> processed above
           build-args: |
             TRAC_INSTALL_URL=svn+https://svn.edgewall.org/repos/trac/trunk
           labels: ${{ steps.meta.outputs.labels }}
