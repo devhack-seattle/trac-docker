@@ -100,7 +100,7 @@ jobs:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:1.6
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:next-stable-1.6.x
           build-args: |
             TRAC_INSTALL_URL=svn+https://svn.edgewall.org/repos/trac/branches/1.6-stable
           labels: ${{ steps.meta.outputs.labels }}
