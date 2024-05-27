@@ -19,7 +19,13 @@ team's established development process and policies.
     ```bash
     $ git clone https://github.com/mjsir911/trac-docker
     $ cd trac-docker
-    $ docker build -t trac ./
+    $ docker build -t ghcr.io/mjsir911/trac:latest
+    ```
+
+* just pull it
+
+    ```
+    $ docker pull ghcr.io/mjsir911/trac:latest
     ```
 
 
@@ -30,7 +36,7 @@ team's established development process and policies.
 Just run
 
 ```
-$ docker run -d -p 8000:8000 --name my_trac trac
+$ docker run -d -p 8000:8000 --name my_trac ghcr.io/mjsir911/trac:latest
 ```
 
 After several seconds, you can visit the web page at
