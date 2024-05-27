@@ -69,9 +69,9 @@ jobs:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ${{ env.IMAGE_NAME }}:stable
-            ${{ env.IMAGE_NAME }}:latest
-            ${{ steps.meta.outputs.tags }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:stable
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -83,8 +83,8 @@ jobs:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ${{ env.IMAGE_NAME }}:trunk
-            ${{ env.IMAGE_NAME }}:unstable
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:trunk
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:unstable
           build-args: |
             TRAC_INSTALL_URL=svn+https://svn.edgewall.org/repos/trac/trunk
           labels: ${{ steps.meta.outputs.labels }}
