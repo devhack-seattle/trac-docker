@@ -21,6 +21,6 @@ RUN trac-admin . initenv ${TRAC_PROJECT_NAME} ${DB_LINK}
 RUN chown -R www-data: .
 RUN chmod -R 775 .
 
-EXPOSE 8000
+EXPOSE 80
 USER www-data
 ENTRYPOINT ["tracd", "--single-env", "."]
