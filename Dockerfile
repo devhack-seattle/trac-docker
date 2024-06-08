@@ -23,5 +23,4 @@ RUN chmod -R 775 .
 
 EXPOSE 8000
 USER www-data
-ENTRYPOINT ["tracd"]
-CMD ["--single-env", "."]
+ENTRYPOINT ["tracd", "--single-env", "."]
