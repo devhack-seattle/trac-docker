@@ -23,4 +23,5 @@ RUN chmod -R 775 .
 
 EXPOSE 8000
 USER www-data
-CMD tracd -s --port 8000 .
+ENTRYPOINT ["tracd"]
+CMD ["--single-env", "."]
