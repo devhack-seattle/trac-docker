@@ -17,15 +17,15 @@ team's established development process and policies.
 * Build it using Dockerfile
 
     ```bash
-    $ git clone https://github.com/mjsir911/trac-docker
+    $ git clone https://github.com/devhack-seattle/trac-docker
     $ cd trac-docker
-    $ docker build -t ghcr.io/mjsir911/trac:latest
+    $ docker build -t ghcr.io/devhack-seattle/trac:latest
     ```
 
 * just pull it
 
     ```
-    $ docker pull ghcr.io/mjsir911/trac:latest
+    $ docker pull ghcr.io/devhack-seattle/trac:latest
     ```
 
 
@@ -36,7 +36,7 @@ team's established development process and policies.
 Just run
 
 ```
-$ docker run -d -p 8000:8000 --name my_trac ghcr.io/mjsir911/trac:latest
+$ docker run -d -p 8000:8000 --name my_trac ghcr.io/devhack-seattle/trac:latest
 ```
 
 After several seconds, you can visit the web page at
