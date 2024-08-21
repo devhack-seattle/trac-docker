@@ -62,6 +62,12 @@ jobs:
           tags: |
             type=schedule,prefix=trunk-,pattern={{date 'YYYYMMDD'}}
 
+      - name: Get latest version number
+        id: get_version
+        run:
+          - echo -n "::set-output name=version::"
+          - curl --silent https://pypi.python.org/pypi/Trac/json | jq -r .info.version
+
       - name: Build and push unstable Docker image
         id: build-and-push-unstable
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
@@ -90,6 +96,9 @@ jobs:
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:stable
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{steps.get_version.outputs.version}}
+          build-args: |
+            TRAC_INSTALL_URL=https://download.edgewall.org/trac/Trac-${{steps.get_version.outputs.version}}.tar.gz
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
